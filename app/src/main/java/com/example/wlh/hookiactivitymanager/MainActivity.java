@@ -37,11 +37,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }
 
-/* 插件化技术，替换activity
+/**
+*  插件化技术，替换activity
+ *  hook IActivtiyManager
 * 2010-01-02 10:58:28.987 12074-12074/com.example.wlh.hookiactivitymanager D/MainActivity: wanlihua debug click callback
 * 2010-01-02 10:58:28.994 12074-12074/com.example.wlh.hookiactivitymanager D/IActivityManagerProxy: wanlihua debug hook startActivity ok
 * 2010-01-02 10:58:29.045 12074-12074/com.example.wlh.hookiactivitymanager D/HCallback: wanlihua debug is ready change intent : ComponentInfo{com.example.wlh.hookiactivitymanager/com.example.wlh.hookiactivitymanager.stubActivity}
 * 2010-01-02 10:58:29.046 12074-12074/com.example.wlh.hookiactivitymanager D/HCallback: wanlihua debug is changed intent : ComponentInfo{com.example.wlh.hookiactivitymanager/com.example.wlh.hookiactivitymanager.TargetActivity}
 */
 
+/**
+ * hook instrumentation
+ * 2010-01-02 13:27:14.380 12534-12534/com.example.wlh.hookiactivitymanager D/MainActivity: wanlihua debug click callback
+ * 2010-01-02 13:27:14.381 12534-12534/com.example.wlh.hookiactivitymanager D/InStrumentationProxy: wanlihua debug hook ativtiy sucess -- who com.example.wlh.hookiactivitymanager.MainActivity@24548b3
+ */
 

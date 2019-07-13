@@ -1,5 +1,7 @@
 package com.example.wlh.hookiactivitymanager;
 
+import android.app.Instrumentation;
+import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
 
@@ -38,4 +40,15 @@ class HookHelper {
         FieldUtils.setField(Handler.class, mH,"mCallback", new HCallback(mH));/*HCallback*/
     }
 
+    public static void hookInstrumentation(Context context) throws Exception {
+        Class<?> contextImplClass = Class.forName("android.app.ContextImpl");
+        Field mMainThreadField = FieldUtils.getField(contextImplClass, "mMainThread");
+        Object activityThread = mMainThreadField.get(context);
+        Class<?> activityThreadClass = Class.forName("android.app.ActivityThread");
+
+        Field mInstrumentationField = FieldUtils.getField(activityThreadClass,"mInstrumentation");
+        FieldUtils.setField(activityThreadClass, activityThread, "mInstrumentation",
+                new InstrumentationProxy((Instrumentation)mInstrumentationField.get(activityThread),
+                        context.getPackageManager()));
+    }
 }

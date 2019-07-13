@@ -8,8 +8,9 @@ public class MyApplication extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         try {
-            HookHelper.HookAMS();
-            HookHelper.hookHandler();//hookHandler
+            //HookHelper.HookAMS();
+            //HookHelper.hookHandler();//hookHandler
+            HookHelper.hookInstrumentation(base);
         } catch (Exception e) {
             e.printStackTrace();
         }
